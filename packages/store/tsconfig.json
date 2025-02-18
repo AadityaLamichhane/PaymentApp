@@ -1,0 +1,9 @@
+{
+  "name":"@repo/typescript-config/react-library.json",
+  "compilerOptions": {
+    "outDir": "dist"
+  },
+  "exclude": ["node_modules","dist"],
+  "include": ["src"]
+
+}

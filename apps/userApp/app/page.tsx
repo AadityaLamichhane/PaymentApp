@@ -1,9 +1,4 @@
-import Image from "next/image";
-import { Card } from "@repo/ui/card";
-import { PrismaClient } from '@prisma/client'
-import { CallingDatabase } from "./CallingDatabase";
-import { GettingData } from "./GettingDatabase";
-const prisma = new PrismaClient()
+
 function Gradient({
   conic,
   className,
@@ -52,12 +47,7 @@ export default async function Page() {
   return (
     
     <>
-    <div className="text-4xl">
-      text size  in the 4xl design
-    </div>
-    <CallingDatabase/>
-    <GettingData/>
-
+<div> This iis the repository to look in to the things </div>
     </>
   );
 }

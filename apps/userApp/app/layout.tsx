@@ -1,6 +1,7 @@
-import { ErrorBoundary } from "next/dist/client/components/error-boundary";
+
 import "./globals.css";
 import "@repo/ui/styles.css";
+import { Providers } from "../provider";
 
 
 export default function RootLayout({
@@ -10,7 +11,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <Providers>
+        <body>{children}</body>
+      </Providers>
+      
     </html>
   );
 }

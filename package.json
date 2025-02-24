@@ -3,27 +3,30 @@
   "private": true,
   "scripts": {
     "build": "turbo build",
-    "dev": "turbo run dev",
-    "lint": "turbo run lint",
-    "check-types": "turbo check-types",
+    "dev": "turbo dev",
+    "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
-    "prettier": "^3.5.0",
-    "prettier-plugin-tailwindcss": "^0.6.11",
-    "turbo": "^2.4.2"
+    "@repo/eslint-config": "*",
+    "@repo/typescript-config": "*",
+    "prettier": "^3.2.5",
+    "turbo": "latest"
   },
   "engines": {
     "node": ">=18"
   },
-  "packageManager": "npm@11.0.0",
+  "packageManager": "npm@10.2.4",
   "workspaces": [
     "apps/*",
     "packages/*"
   ],
   "dependencies": {
     "@types/bcrypt": "^5.0.2",
+    "@types/next-auth": "^3.13.0",
+    "@types/recoil": "^0.0.1",
     "bcrypt": "^5.1.1",
-    "next-auth": "^4.24.11"
+    "next-auth": "^4.24.11",
+    "recoil": "^0.7.7"
   }
 }

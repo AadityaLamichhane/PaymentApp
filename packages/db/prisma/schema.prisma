@@ -18,12 +18,14 @@ model User{
   name String? 
   number String @unique
   password String 
+  Balance Balance[]
+  OnRampingtransaction OnRampingtransaction[]
   }
 
 model Merchant{
   id Int @id @default(autoincrement())
+  name String 
   email String? @unique
-  password String
   auth_type AuthType
   }
 enum AuthType {
@@ -31,3 +33,25 @@ enum AuthType {
   Github   
   }
 
+model Balance {
+  id Int @unique @default(autoincrement())
+  amount Int @default(0)
+  status Status @default(Pending)
+  time DateTime
+  userId Int @unique
+  user User @relation(fields: [userId], references: [id])
+
+}
+enum Status {
+  Pending
+  Failed 
+  Success
+}
+model OnRampingtransaction {
+  id Int @unique @default(autoincrement())
+  token String @unique 
+  status Status @default(Pending)
+  userId Int @unique
+  user User @relation(fields: [userId],references: [id])
+
+}

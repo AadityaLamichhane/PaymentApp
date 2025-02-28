@@ -1,9 +1,10 @@
 {
-  "name": "@repo/mechantapp",
+  "name": "mechantapp",
   "version": "1.0.0",
   "private": true,
+  
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev --port 3001 --turbopack",
     "build": "next build",
     "start": "next start",
     "lint": "next lint --max-warnings 0",
@@ -19,7 +20,9 @@
     "next": "^15.1.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "recoil": "^0.7.7"
+    "recoil": "^0.7.7",
+    "@repo/typescript-config": "*",
+    "prisma": "^4.0.0"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^15.1.6",
@@ -33,6 +36,7 @@
     "eslint": "^9.20.0",
     "postcss": "^8.5.1",
     "tailwindcss": "^3.4.17",
-    "typescript": "5.7.3"
+    "typescript": "5.7.3",
+    "@prisma/client": "^4.0.0"
   }
 }

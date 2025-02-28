@@ -2,8 +2,10 @@
   "name": "@repo/userapp",
   "version": "1.0.0",
   "private": true,
+  "type":"module",
+  
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev --port 3000 --turbopack",
     "build": "next build",
     "start": "next start",
     "lint": "next lint --max-warnings 0",

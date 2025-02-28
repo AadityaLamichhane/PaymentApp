@@ -1,6 +1,7 @@
 {
-  "name": "with-tailwind",
+  "name": "repo",
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
@@ -11,22 +12,27 @@
     "@repo/eslint-config": "*",
     "@repo/typescript-config": "*",
     "prettier": "^3.2.5",
+    "prisma": "6.4.1",
     "turbo": "latest"
   },
   "engines": {
     "node": ">=18"
   },
-  "packageManager": "npm@10.2.4",
+  "packageManager": "yarn@1.22.22",
   "workspaces": [
     "apps/*",
     "packages/*"
   ],
   "dependencies": {
+    "@prisma/client": "6.4.1",
     "@types/bcrypt": "^5.0.2",
     "@types/next-auth": "^3.13.0",
     "@types/recoil": "^0.0.1",
     "bcrypt": "^5.1.1",
     "next-auth": "^4.24.11",
-    "recoil": "^0.7.7"
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "recoil": "^0.7.7",
+    "yarn": "^1.22.22"
   }
 }

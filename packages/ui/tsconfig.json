@@ -1,5 +1,5 @@
 {
   "extends": "@repo/typescript-config/react-library.json",
-  "include": ["src"],
+  "include": ["src", "../../apps/userApp/components/Appbarclient.tsx"],
   "exclude": ["dist", "build", "node_modules"]
 }

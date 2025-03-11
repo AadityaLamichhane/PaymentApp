@@ -1,4 +1,6 @@
-import {CardElement} from "./CardElement"
+
+import { CardElement } from "./CardElement"
+
 function Gradient({
   conic,
   className,
@@ -42,14 +44,7 @@ const LINKS = [
   },
 ];
 
-export default function Page() {
- 
-  return (
+export default async function Page() {
     
-    <>
-
-<CardElement>
-  </CardElement>
-    </>
-  );
+    return <CardElement  />
 }

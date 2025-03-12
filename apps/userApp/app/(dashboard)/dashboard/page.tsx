@@ -1,5 +1,6 @@
 export default function(){
-    return (<>
-    This is the dashboard
+    return (
+    <>
+    Inside the dashboard component in the page 
     </>)
 }

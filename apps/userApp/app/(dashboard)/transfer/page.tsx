@@ -1,6 +1,6 @@
 export default function ()
 {
     return <>
- Hello from the transactions site  
+ Hello from the transfer site  
     </>
 }

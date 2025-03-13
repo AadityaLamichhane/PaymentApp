@@ -1,7 +1,7 @@
 import { AppbarClient } from "../../components/Appbarclient";
 import { SideBarComponent } from "../../components/SideBarComponent";
 
-export default function Layout({
+export default function({
   children
 }: {
   children: React.ReactNode;
@@ -10,12 +10,12 @@ export default function Layout({
     <div className="flex-col">
         <AppbarClient/>
         <div className="flex">
-            <div className="w-72 border-r border-slate-300 min-h-screen mr-4 pt-28">
+            <div className="w-72 border-r border-slate-300 min-h-screen pt-28">
                 <div>
                     <SideBarComponent href={"/dashboard"} icon={<HomeIcon/>} title="Home" />
                     <SideBarComponent href={"/transfer"} icon={<TransferIcon />} title="Transfer" />
                     <SideBarComponent href={"/transactions"} icon={<TransactionsIcon />} title="Transactions" />
-                    <SideBarComponent href={"/p2ptransactions"} icon={<P2pTransactionsIcon/>} title="p2pTransactions"/>
+                    <SideBarComponent href={"/p2pfund"} icon={<P2pTransactionsIcon/>} title="p2pTransactions"/>
                 </div>
             </div>
             <div>{children}</div>

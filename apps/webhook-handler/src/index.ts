@@ -40,11 +40,11 @@ app.post("/bankwebhook", async (req, res) => {
             })
         ]);
         res.json({ msg: "Captured" });
-    } catch (error:any) {
+    } catch (error: any) {
         res.status(400).json({ error: error.message });
     }
 });
 
 app.listen(3003, () => {
-    console.log("Server is running on port 3000");
+    console.log("Server is running on port 3003");
 });

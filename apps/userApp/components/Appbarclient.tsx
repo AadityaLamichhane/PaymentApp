@@ -6,20 +6,21 @@ import { useRouter } from "next/navigation";
 
 export  function AppbarClient(){
     const route = useRouter();
-    const session = useSession();
-    const user =   session.data?.user ; 
-    const authenticated:boolean = user ? true:false;
+    const session =   useSession();
+    const authenticated = session.status === "authenticated";
 
-    console.log(`The user is ${authenticated} in line no 10 `);
-    console.log(`The user is ${user} `);
     return(
     <>
-    
-        <Appbar user={user} authenticated={authenticated} onSignin={signIn} onSignout={()=>{
-            // signout the user and then routing to the signin page
-             signOut();
-             route.push("/api/auth/signin")
-        }}/>
+    <div >
+        <Appbar 
+            user={session.data?.user} 
+            authenticated={authenticated} 
+            onSignin={() => signIn()} 
+            onSignout={async () => {
+                await signOut({ callbackUrl: "/api/auth/signin" });
+            }}
+        />
+    </div>
     </>
     )
 }

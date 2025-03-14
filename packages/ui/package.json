@@ -9,6 +9,7 @@
   ],
   "exports": {
     "./styles.css": "./dist/index.css",
+    "./Card":"./src/component/Card.tsx",
     "./appbar":"./src/component/Appbar.tsx",
     "./button":"./src/component/Button.tsx"
   },

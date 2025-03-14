@@ -14,7 +14,7 @@ export default  async function Page() {
     }
     else{
 
-      console.log("User is not signed in");
+        return redirect("/api/auth/signin");
 
     }
 }

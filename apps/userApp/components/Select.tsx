@@ -1,9 +1,16 @@
 import { useState } from "react";
-export const Select = ()=>{
+export const Select = ({options}:{
+    options:{
+        name: string
+    }[]
+})=>{
     const [value,setValue] = useState();
     return(
     <>
-        <select onChange={ (e)=>setValue(e.target.value)}>{}</select>
+        <select>
+            {/* options will have the value and the name  */}
+         
+            </select>
     </>
     )
 }

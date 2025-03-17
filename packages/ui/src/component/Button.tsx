@@ -8,7 +8,7 @@ export const Button = ({children, onClick}: ButtonInterface) => {
         <>
             <button 
                 type="button" 
-                className=" font-semibold bg-neutral-950 text-white p-3 w-md border-none rounded-md hover:bg-neutral-800" 
+                className=" font-semibold bg-blue-600 text-white p-3 w-full  border-none rounded-md hover:bg-blue-800" 
                 onClick={onClick}>
                 {children} 
             </button>

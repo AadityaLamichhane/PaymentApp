@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Center } from "./Center";
 export function Card({
   title,
   children,
@@ -9,11 +9,16 @@ export function Card({
 }):React.JSX.Element {
   return (
     <div
-      className="border p-6 bg-white rounded-xl bg-[#ededed]"
+      className="border p-6 bg-white rounded-xl bg-[#ededed] border-solid"
     >
-      <h1 className="text-xl border-b pb-2">
-        {title}
-      </h1>
+      
+        <Center>
+          <h1 className="text-xl border-b pb-2">
+            {title}
+          </h1>
+          </Center>
+                
+      
       {/* To change  */}
       <div>{children}</div>
     </div>

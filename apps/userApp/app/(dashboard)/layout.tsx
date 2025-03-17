@@ -9,7 +9,7 @@ export default function Layout({
   return (
     <div className="flex-col">
         <AppbarClient/>
-        <div className="flex">
+        <div className="flex w-screen">
             <div className="w-80 border-r border-slate-300 min-h-screen pt-28">
                 <div className="">
                     <SideBarComponent href={"/dashboard"} icon={<HomeIcon/>} title="Home" />

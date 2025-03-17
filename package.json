@@ -28,11 +28,12 @@
     "@types/bcrypt": "^5.0.2",
     "@types/next-auth": "^3.13.0",
     "@types/recoil": "^0.0.1",
-    "bcrypt": "^5.1.1",
+    "axios": "^1.8.3",
     "next-auth": "^4.24.11",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "recoil": "^0.7.7",
+    "swr": "^2.3.3",
     "yarn": "^1.22.22"
   }
 }

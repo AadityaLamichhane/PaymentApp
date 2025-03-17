@@ -1,51 +1,60 @@
-import express from "express"
-import z from "zod"
-import db from "@repo/db/client"
-
+import express from "express";
+import db from "@repo/db/client";
 const app = express();
-app.use(express.json());
 
-app.post("/bankwebhook", async (req, res) => {
-    const paymentobject = z.object({
-        token: z.string(),
-        userId: z.number(),
-        amount: z.number()
-    });
-    type PaymentType = z.infer<typeof paymentobject>;
+app.use(express.json())
 
-    const paymentinformation: PaymentType = {
+app.post("/hdfcWebhook", async (req, res) => {
+    //TODO: Add zod validation here?
+    //TODO: HDFC bank should ideally send us a secret so we know this is sent by them
+    const paymentInformation: {
+        token: string;
+        userId: string;
+        amount: string
+    } = {
         token: req.body.token,
-        userId: req.body.user_id,
+        userId: req.body.userId,
         amount: req.body.amount
     };
+
     try {
-        const validInput = paymentobject.parse(paymentinformation);
+
+        // Updating the balance if it exists or getting the increamemnt of the db if it doesnt
         await db.$transaction([
-            db.balance.update({
+            db.balance.upsert({
                 where: {
-                    userId: Number(paymentinformation.userId)
+                    userId: Number(paymentInformation.userId)
                 },
-                data: {
+                update:{
                     amount: {
-                        increment: Number(paymentinformation.amount)
-                    }
+                        increment: Number(paymentInformation.amount)
+                    }},
+                create:{
+                    userId:Number(paymentInformation.userId),
+                    amount:Number(paymentInformation.amount),
+                    locked:0
                 }
             }),
-            db.onRampTransaction.updateMany({
+           db.onRampTransaction.update({
                 where: {
-                    token: paymentinformation.token
-                },
+                    token: paymentInformation.token
+                }, 
                 data: {
-                    status: "Success"
+                    status: "Success",
                 }
             })
         ]);
-        res.json({ msg: "Captured" });
-    } catch (error: any) {
-        res.status(400).json({ error: error.message });
-    }
-});
 
-app.listen(3003, () => {
-    console.log("Server is running on port 3003");
-});
+        res.json({
+            message: "Captured"
+        })
+    } catch(e) {
+        console.error(e);
+        res.status(411).json({
+            message: "Error while processing webhook"
+        })
+    }
+
+})
+
+app.listen(3003);

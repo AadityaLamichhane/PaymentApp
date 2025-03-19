@@ -9,7 +9,7 @@ export function Card({
 }):React.JSX.Element {
   return (
     <div
-      className="border p-6 bg-white rounded-xl bg-[#ededed] border-solid"
+      className="border p-6 bg-white rounded-xl bg-[#ededed] border-solid max-w-[450]"
     >
       
         <Center>

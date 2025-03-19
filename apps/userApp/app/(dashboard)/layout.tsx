@@ -18,7 +18,9 @@ export default function Layout({
                     <SideBarComponent href={"/p2pfund"} icon={<P2pTransactionsIcon/>} title="p2pTransactions"/>
                 </div>
             </div>
-            <div>{children}</div>
+            <div className="w-screen">
+              {children}
+            </div>
         </div>
     </div>
   );

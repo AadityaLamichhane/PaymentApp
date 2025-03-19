@@ -17,10 +17,8 @@ app.post("/hdfcWebhook", async (req, res) => {
         amount: req.body.amount
     };
 
-    try {
-
-        // Updating the balance if it exists or getting the increamemnt of the db if it doesnt
-        await db.$transaction([
+    try{
+            await db.$transaction([
             db.balance.upsert({
                 where: {
                     userId: Number(paymentInformation.userId)

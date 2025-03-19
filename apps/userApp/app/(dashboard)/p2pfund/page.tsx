@@ -1,6 +1,8 @@
-export default function ()
+import { Pay2Persion } from "../../../components/PaytoPersonCard";
+
+export  default function()
 {
     return <>
-    p2p funding site 
+    <Pay2Persion/>
     </>
 }

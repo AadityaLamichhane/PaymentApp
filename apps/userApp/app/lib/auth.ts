@@ -61,6 +61,9 @@ export const authOption = {
     async session({ token, session }: any) {
       session.user.id = token.sub;
       return session;
-    }
+    },
+    async redirect() {
+      return "/dashboard";
+  }
   }
 };

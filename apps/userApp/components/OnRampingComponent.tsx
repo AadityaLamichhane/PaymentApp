@@ -18,7 +18,6 @@ export const OnRampingComponent = ({ onRampingtransactions }: { onRampingtransac
             <div >
                 {/*Do this loop for the onRampingTransactions  */}
                 {onRampingtransactions.map((element: any) => {
-                    console.log(`The id of the element is ${element.startTime}`)
                     return (
                         <div key={element.id}>
 

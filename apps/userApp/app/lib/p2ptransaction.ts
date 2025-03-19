@@ -9,11 +9,10 @@ export async function  P2ptransactions (to:number , amount :number )
     
     const session = await getServerSession(authOption);
     const fromUser = session?.user.id;
-    console.log(`The id of the user is ${fromUser}`);
     
     try {
         
-        const balancefrom   = await db.balance.findFirstOrThrow({where:{userId:fromUser}});
+        const balancefrom   = await db.balance.findFirstOrThrow({where:{userId:Number(fromUser)}});
         if(balancefrom.amount < amount )
         {
             return console.error("Not enough money to send to the user ");
@@ -36,7 +35,7 @@ export async function  P2ptransactions (to:number , amount :number )
     db.$transaction([
         db.balance.update({
             where:{
-                userId : fromUser 
+                userId : Number(fromUser) 
             },
             data:{
                 amount:{
@@ -46,17 +45,17 @@ export async function  P2ptransactions (to:number , amount :number )
         }),
         db.balance.upsert({
             where:{
-                id : toUser.id  
+                id : Number(toUser.id)  
             },
              update:{
                     amount:{
-                        increment:(amount*100)
+                        increment:(Number(amount)*100)
                     }
                 },
                 create:{
-                    amount: (amount*100),
+                    amount: (Number(amount)*100),
                     locked:0,
-                    userId :toUser.id
+                    userId :Number(toUser.id)
                 }
             }
         )

@@ -1,4 +1,4 @@
-name: Build Succeed PR
+name: BUILD PR STATUS
 on:
   pull_request:
     branches:
@@ -6,7 +6,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: Build the project
+    name: Build the proj
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js

@@ -4,13 +4,11 @@ import sharedConfig from "@repo/tailwind-config";
 
 const config: Pick<Config, "content" | "presets"> = {
   content: [
-  //     "./app/**/*.tsx"
-  //     ,"../../packages/ui/**/*.tsx",
-  //     "./app/components/*.tsx"
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "../../packages/ui/**/*.{js,ts,jsx,tsx,mdx}"
+    "../../packages/ui/**/*.{js,ts,jsx,tsx,mdx}",
+    "../../packages/**/*.{js,ts,jsx,tsx,mdx}"
   ],
   presets: [sharedConfig],
 };

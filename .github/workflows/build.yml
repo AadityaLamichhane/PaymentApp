@@ -1,4 +1,4 @@
-name: BUILD PR STATUS
+name: BUILD PR STATUS GITHUB
 on:
   pull_request:
     branches:

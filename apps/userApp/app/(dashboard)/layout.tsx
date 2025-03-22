@@ -10,12 +10,12 @@ export default function Layout({
     <div className="flex-col">
         <AppbarClient/>
         <div className="flex w-screen">
-            <div className="w-80 border-r border-slate-300 min-h-screen pt-28">
-                <div className="">
-                    <SideBarComponent href={"/dashboard"} icon={<HomeIcon/>} title="Home" />
-                    <SideBarComponent href={"/transfer"} icon={<TransferIcon />} title="Transfer" />
-                    <SideBarComponent href={"/transactions"} icon={<TransactionsIcon />} title="Transactions" />
-                    <SideBarComponent href={"/p2pfund"} icon={<P2pTransactionsIcon/>} title="p2pTransactions"/>
+            <div className="w-60 border-r border-slate-300  pt-28"> {/* Adjusted width */}
+                <div className="flex flex-col w-50 text-gray-800"> {/* Adjusted text color */}
+                  <SideBarComponent href={"/dashboard"} icon={<HomeIcon/>} title="Home" />
+                  <SideBarComponent href={"/transfer"} icon={<TransferIcon />} title="Transfer" />
+                  <SideBarComponent href={"/transactions"} icon={<TransactionsIcon />} title="Transactions" />
+                  <SideBarComponent href={"/p2pfund"} icon={<P2pTransactionsIcon/>} title="p2pTransactions"/>
                 </div>
             </div>
             <div className="w-screen">

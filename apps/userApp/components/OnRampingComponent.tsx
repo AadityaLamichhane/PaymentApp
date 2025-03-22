@@ -11,9 +11,6 @@ type OnRampTransaction = {
 };
 export const OnRampingComponent = ({ onRampingtransactions }: { onRampingtransactions: OnRampTransaction[] }) => {
     return (<>
-        {/*  */}
-
-
         <Card title="Transaction">
             <div >
                 {/*Do this loop for the onRampingTransactions  */}
@@ -36,13 +33,6 @@ export const OnRampingComponent = ({ onRampingtransactions }: { onRampingtransac
                                     </div>
 
                                 </div>
-                                {/* Todo 
-                           Implement the status of the transaction with the color red or green 
-                           nicely designed button to get things done 
-                           Make the ui more interactive by hiding the text and reducing the max heigt in the small screen to be much more minimal 
-                            
-                            */}
-
                                 <div className="flex flex-col items-end text-end ">
                                     <div>
                                         {element.amount / 100} INR
@@ -58,7 +48,6 @@ export const OnRampingComponent = ({ onRampingtransactions }: { onRampingtransac
                             </div>
                         </div>
                     )
-
                 })}
             </div>
         </Card>

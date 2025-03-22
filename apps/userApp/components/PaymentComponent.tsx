@@ -7,7 +7,6 @@ import { useState } from "react"
 import { Center } from "../../../packages/ui/src/component/Center"
 import { onRampTransaction } from "../app/lib/OnRampTransaction"
 import { useRouter } from "next/router"
-
 // defining the array of the object that have the information of the banking details 
 const Bankingobject = [
     {
@@ -23,11 +22,9 @@ const Bankingobject = [
 ];
 
 export const PaymentComponent = () => {
-
-    const [providername, SetProviderName] = useState(Bankingobject[0]?.name || "");
+   const [providername, SetProviderName] = useState(Bankingobject[0]?.name || "");
     const [providerurl, SetProviderUrl] = useState(Bankingobject[0]?.url || "");
     const [amount, SetAmount] = useState(0);
-
     const handleSelectChange = (valuename: string) => {
         const selectedbank = Bankingobject.find((object) => object.name === valuename);
         if (selectedbank) {
@@ -35,7 +32,6 @@ export const PaymentComponent = () => {
             SetProviderUrl(selectedbank.url);
         }
     };
-
     return (<div className="w-full p-8 ">
         <Card title="Topup From Bank">
             <div>
@@ -65,7 +61,6 @@ export const PaymentComponent = () => {
                         catch (e) {
                             console.error(e);
                         }
-
                     }}>Topup</Button>
                 </div>
             </div>

@@ -1,12 +1,12 @@
-name: Build Succeed PR
+name: BUILD PR STATUS GITHUB
 on:
   pull_request:
     branches:
-      - master
+      - main
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: Build the project
+    name: Build the proj
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js

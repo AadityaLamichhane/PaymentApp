@@ -17,8 +17,6 @@ export function Card({
             {title}
           </h1>
           </Center>
-                
-      
       {/* To change  */}
       <div>{children}</div>
     </div>

@@ -4,13 +4,11 @@ import { Pay2Persion } from "../../../components/PaytoPersonCard";
 export  default function()
 {
     return <>
-    <div className="h-screen w-screen ">
+    <div className="">
     <Center>
-        <div className="mr-[150] pb-[150]">
+        <div className="">
             <Pay2Persion/>
         </div>
-    
-    
     </Center>
         
     </div>

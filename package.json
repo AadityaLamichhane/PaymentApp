@@ -7,7 +7,7 @@
     "dev": "turbo dev",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "db:generate":"cd packages/db/prisma && yarn migrate dev && yarn prisa generate && cd ../../../ "
+    "db:generate": "cd packages/db/prisma && yarn prisma migrate dev  &&  yarn prisma generate && cd ../../../"
   },
   "devDependencies": {
     "@repo/eslint-config": "*",
@@ -15,7 +15,7 @@
     "@types/react": "18.2.55",
     "@types/react-dom": "19.0.0",
     "prettier": "^3.2.5",
-    "prisma": "6.5.0",
+    "prisma": "5.22.0",
     "turbo": "latest"
   },
   "engines": {

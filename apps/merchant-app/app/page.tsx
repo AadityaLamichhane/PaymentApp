@@ -2,7 +2,8 @@
  
 export default async  function() {
   
-  return (<div>
- Hello wrold   
+  return (
+  <div>
+    Hello wrold   
   </div>)
 }

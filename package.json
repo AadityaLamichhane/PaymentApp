@@ -7,13 +7,11 @@
     "dev": "turbo dev",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "db:generate": "cd packages/db/prisma && yarn prisma migrate dev  &&  yarn prisma generate && cd ../../../"
+    "db:generate": "cd packages/db/prisma && yarn prisma migrate dev && yarn prisma generate && cd ../.."
   },
   "devDependencies": {
     "@repo/eslint-config": "*",
     "@repo/typescript-config": "*",
-    "@types/react": "18.2.55",
-    "@types/react-dom": "19.0.0",
     "prettier": "^3.2.5",
     "prisma": "5.22.0",
     "turbo": "latest"
@@ -27,14 +25,12 @@
     "packages/*"
   ],
   "dependencies": {
-    "@prisma/client": "^6.5.0",
+    "@prisma/client": "^5.10.2",
     "@types/bcrypt": "^5.0.2",
     "@types/next-auth": "^3.13.0",
     "@types/recoil": "^0.0.1",
     "axios": "^1.8.3",
     "next-auth": "^4.24.11",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
     "recoil": "^0.7.7",
     "yarn": "^1.22.22"
   }

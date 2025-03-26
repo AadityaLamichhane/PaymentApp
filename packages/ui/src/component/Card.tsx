@@ -1,24 +1,25 @@
 import React from "react";
 import { Center } from "./Center";
+
 export function Card({
   title,
   children,
 }: {
   title: string;
   children?: React.ReactNode;
-}):React.JSX.Element {
+}): React.JSX.Element {
   return (
     <div
-      className="border p-6 bg-white rounded-xl bg-[#ededed] border-solid max-w-[450] w-[400]"
+      className="p-6 rounded-xl border-solid max-w-[450px] w-[400px] bg-white shadow-lg"
     >
-      
-        <Center>
-          <h1 className="text-xl border-b pb-2">
-            {title}
-          </h1>
-          </Center>
-      {/* To change  */}
-      <div>{children}</div>
+      <Center>
+      <h1 className="text-xl border-b pb-2 bg-white bg-opacity-75 p-2 rounded-t-xl">
+        {title}
+      </h1>
+      </Center>
+      <div className="bg-white bg-opacity-75 p-4 rounded-b-xl">
+      {children}
+      </div>
     </div>
   );
 }

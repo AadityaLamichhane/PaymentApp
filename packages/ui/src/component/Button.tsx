@@ -1,17 +1,17 @@
-"use client"
-interface ButtonInterface {
-    children: React.ReactNode
-    onClick: () => void
+"use client";
+
+import { ReactNode } from "react";
+
+interface ButtonProps {
+  children: ReactNode;
+  onClick: () => void;
 }
-export const Button = ({children, onClick}: ButtonInterface) => {
-    return (
-        <>
-            <button 
-                type="button" 
-                className=" font-semibold bg-blue-600 text-white p-3 w-full  border-none rounded-md hover:bg-blue-800" 
-                onClick={onClick}>
-                {children} 
-            </button>
-        </>
-    );
-}
+
+export const Button = ({ onClick, children }: ButtonProps) => {
+  return (
+    <button onClick={onClick} type="button" className="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2">
+      {children}
+    </button>
+
+  );
+};

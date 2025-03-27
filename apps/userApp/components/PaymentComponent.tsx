@@ -22,7 +22,7 @@ const Bankingobject = [
 ];
 
 export const PaymentComponent = () => {
-   const [providername, SetProviderName] = useState(Bankingobject[0]?.name || "");
+    const [providername, SetProviderName] = useState(Bankingobject[0]?.name || "");
     const [providerurl, SetProviderUrl] = useState(Bankingobject[0]?.url || "");
     const [amount, SetAmount] = useState(0);
     const handleSelectChange = (valuename: string) => {

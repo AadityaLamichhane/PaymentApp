@@ -33,38 +33,41 @@ export const PaymentComponent = () => {
         }
     };
     return (<div className="w-full p-8 ">
-        <Card title="Topup From Bank">
-            <div>
-                <div className="py-4 text-left">Payment</div>
-                <InputComponent title={""} label={"Money"} onChange={(value) => {
-                    SetAmount(Number(value));
-                }} />
-                <Center>
-                    <div className="p-2">
-                        <Select options={
-                            Bankingobject.map(provider => {
-                                return {
-                                    name: provider.name,
-                                    id: provider.id
-                                }
-                            })
-                        } onSelect={handleSelectChange} />
-                    </div>
-                </Center>
+            <Center>
+              <Card title="Topup From Bank">
                 <div>
-                    <Button onClick={async () => {
-                        try {
-                            await onRampTransaction(amount, providerurl);
-                            window.location.href = providerurl || "http://localhost:3000"
+                    <div className="py-4 text-left">Payment</div>
+                    <InputComponent title={""} label={"Money"} onChange={(value) => {
+                        SetAmount(Number(value));
+                    }} />
+                    <Center>
+                        <div className="p-2">
+                            <Select options={
+                                Bankingobject.map(provider => {
+                                    return {
+                                        name: provider.name,
+                                        id: provider.id
+                                    }
+                                })
+                            } onSelect={handleSelectChange} />
+                        </div>
+                    </Center>
+                    <div className="w-full flex justify-center">
+                        <Button onClick={async () => {
+                            try {
+                                await onRampTransaction(amount, providerurl);
+                                window.location.href = providerurl || "http://localhost:3000"
 
-                        }
-                        catch (e) {
-                            console.error(e);
-                        }
-                    }}>Topup</Button>
+                            }
+                            catch (e) {
+                                console.error(e);
+                            }
+                        }}>Topup</Button>
+                    </div>
                 </div>
-            </div>
-        </Card>
-    </div>
+            </Card>
+ 
+        </Center>
+           </div>
     )
 }

@@ -8,7 +8,6 @@ export  function AppbarClient(){
     const route = useRouter();
     const session =   useSession();
     const authenticated = session.status === "authenticated";
-
     return(
     <>
     <div >

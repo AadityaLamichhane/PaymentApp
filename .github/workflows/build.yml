@@ -18,4 +18,4 @@ jobs:
       - name: Run Build
         run: npm run build
       - name: Creating Database
-        run: npm db:generate
+        run: npm run db:generate

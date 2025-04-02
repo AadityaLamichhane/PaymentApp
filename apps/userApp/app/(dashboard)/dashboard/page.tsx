@@ -10,7 +10,7 @@ export default function DashboardPage() {
                         Make the Payment <span className="text-blue-600 dark:text-blue-500">Fast and Effective</span> Esewa.
                     </h1>
                     <p className="text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400">
-                        Here at Esewa, we focus on seamless writing of code and components to make meaningful changes to payments.
+                        Here at PeeSewa, we focus on seamless writing of code and components to make meaningful changes to payments.
                     </p>
                 </div>
             </Center>

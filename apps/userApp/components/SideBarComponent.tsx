@@ -14,15 +14,15 @@ const onClickhandler = ()=>{
     return (
         
 <>
-<div className="flex p-1">
-    <div  onClick={onClickhandler} className="flex items-center group hover:bg-black hover:font-bold hover:text-white hover:text-bold p-4 cursor-pointer transition-all duration-300 rounded-xl">
-        <div className="flex justify-center items-center px-auto hover:pl-1" >
+<div className="flex my-2 w-full ">
+    <div  onClick={onClickhandler} className=" w-full h-12 flex items-center group hover:bg-black  hover:text-white hover:text-bold p-2 cursor-pointer transition-all duration-300 rounded-xl">
+        <div className="flex justify-center items-center px-auto " >
             
             {icon}
-            {(!expand)?<span className="cursor-pointer sidebartoggle  group-hover:scale-100 group-hover:left-28 ">{children}</span>:<></>}
+            {(!expand)?<span className="cursor-pointer sidebartoggle  group-hover:scale-100 group-hover:left-28 group-hover:opacity-100 ">{children}</span>:<></>}
             
         </div>
-        <div className="pl-1 ">
+        <div className="pl-1 py-auto ">
             {(expand)?children:""}
         </div>
         

@@ -35,15 +35,38 @@ export const SideBarContainer = ()=>{
         };
     return (
         <>
-              <div className={` ${(expand)?"w-40":"w-20"}   border-solid  bg-slate-300 h-screen pt-28 h-100%  transition-all duration-250`}> 
-              <div className="flex flex-col  text-gray-800 p-2"> {/* Adjusted text color */}
-                  <SideBarComponent href={"/dashboard"} icon={<HomeIcon/>} children={"Dashboard"}  expand={expand}/>
-                  <SideBarComponent href={"/transfer"} icon={<TransferIcon />} children={"Dashboard"} expand={expand}/>
-                  <SideBarComponent href={"/transactions"} icon={<TransactionsIcon />} children={"Dashboard"}  expand={expand}/>
-                  <SideBarComponent href={"/p2pfund"} icon={<P2pTransactionsIcon/>} children={"Dashboard"} expand={expand}/>
+              <div
+                className={`${
+                  expand ? "w-40" : "w-26"} border-solid bg-slate-160 border-r border-slate-300 h-screen pt-28 `}
+              >
+                <div className="flex flex-col text-gray-800 p-2">
+                  <SideBarComponent
+                    href={"/dashboard"}
+                    icon={<HomeIcon />}
+                    children={"Dashboard"}
+                    expand={expand}
+                  />
+                  <SideBarComponent
+                    href={"/transfer"}
+                    icon={<TransferIcon />}
+                    children={"Transfer"}
+                    expand={expand}
+                  />
+                  <SideBarComponent
+                    href={"/transactions"}
+                    icon={<TransactionsIcon />}
+                    children={"Transactions"}
+                    expand={expand}
+                  />
+                  <SideBarComponent
+                    href={"/p2pfund"}
+                    icon={<P2pTransactionsIcon />}
+                    children={"Payment"}
+                    expand={expand}
+                  />
                 </div>
-                <button onClick = {()=>toggleExpand()}>Change</button>
-            </div>
+                <button  className="  scale-0 sm:scale-100 lg:scale-100"onClick={() => toggleExpand()}>Change</button>
+              </div>
         </>
     )
 }

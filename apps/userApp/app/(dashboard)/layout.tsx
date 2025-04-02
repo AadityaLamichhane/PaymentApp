@@ -8,15 +8,17 @@ export default function Layout({
   children: React.ReactNode;
 }){
   return (
-    <div className="flex-col">
+    <div className="flex-col ">
         <AppbarClient/>
         <div className="flex w-screen">
             <SideBarContainer/>
-            <div>
+            <div className="w-full">
               <Center>
-                {children}
+                  {children}                            
               </Center>
+                          
             </div>
+              
             
              
            

@@ -4,7 +4,7 @@ import { Pay2Persion } from "../../../components/PaytoPersonCard";
 export  default function()
 {
     return <>
-    <div className="h-[500]">
+    <div className="max-w-screen border-solid">
     <Center>
            <Pay2Persion/>
     </Center>

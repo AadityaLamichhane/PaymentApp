@@ -2,3 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
+.sidebartoggle  {
+    @apply absolute left-16 border rounded-lg p-2 bg-black scale-0 text-white transition-all duration-200; 
+}

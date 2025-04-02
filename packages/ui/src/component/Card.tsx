@@ -10,14 +10,13 @@ export function Card({
 }): React.JSX.Element {
   return (
     <div
-      className="p-6 rounded-xl border-solid max-w-[450px] w-[400px] bg-white shadow-lg"
-    >
+      className="p-6 rounded-xl border-solid max-w-2/3 w-96  bg-white shadow-lg">
       <Center>
       <h1 className="text-xl border-b pb-2 bg-white bg-opacity-75 p-2 rounded-t-xl">
-        {title}
+      {title}
       </h1>
       </Center>
-      <div className="bg-white bg-opacity-75 p-4 rounded-b-xl">
+      <div className="bg-white bg-opacity-75  rounded-b-xl">
       {children}
       </div>
     </div>

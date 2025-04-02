@@ -7,8 +7,11 @@
     "dev": "turbo dev",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "db:generate": "cd packages/db/prisma && yarn prisma migrate dev && yarn prisma generate && cd ../.."
+    "start-user-app":"cd apps/userapp/ && yarn run start ",
+    "db:generate": "cd packages/db/prisma &&  yarn prisma generate && cd ../.."
   },
+
+
   "devDependencies": {
     "@repo/eslint-config": "*",
     "@repo/typescript-config": "*",

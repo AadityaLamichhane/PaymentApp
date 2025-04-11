@@ -15,7 +15,9 @@ function Transactions()
 {
     return <>
     <div className="max-w-screen">
-        <Card title="Transactions">body </Card>
+        <Card title="Transactions">
+          
+        </Card>
     </div>
     
     </>

@@ -69,7 +69,6 @@ export async function  P2ptransactions (to : string , amount :number )
 
         })
     ]);
-    // This needs to be displYed to the user and not only to the conmmand but in the applications as well 
 
     console.log("Pay to person was successfull")
 }

@@ -21,7 +21,7 @@ export const OnRampingComponent = ({ onRampingtransactions }: { onRampingtransac
                             <div className="flex justify-between border-b border-slate-300 pb-2">
 
                                 <div className="flex flex-col">
-                                    Bank Provider
+                                    
                                     <div className="flex flex-col text-sm">
                                         <div>
                                             {(element.startTime).toLocaleDateString()}
@@ -35,7 +35,7 @@ export const OnRampingComponent = ({ onRampingtransactions }: { onRampingtransac
                                 </div>
                                 <div className="flex flex-col items-end text-end ">
                                     <div>
-                                        {element.amount / 100} INR
+                                        Rs {element.amount / 100}
                                     </div>
                                     <div className="flex justify-end items-end text-end">
                                         {

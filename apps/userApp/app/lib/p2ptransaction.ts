@@ -28,8 +28,12 @@ export async function  P2ptransactions (to : string , amount :number )
     {
         return console.error("Failed to find the user to send the money");
     }
-    // if there is the user 
+    if(toUser.id == session?.user.id){
+        return alert("Cannot send to yourself")
 
+    }
+    // if there is the user 
+try{
     db.$transaction([
         db.balance.update({
             where:{
@@ -70,5 +74,24 @@ export async function  P2ptransactions (to : string , amount :number )
         })
     ]);
 
+
+}catch(err){
+    db.transferToUser.create({
+        data:{
+            time: new Date(),
+            status:"faill",
+            amount: Number((amount)*100),
+            to_userId:toUser.id,
+            from_userId:fromUser
+        }
+
+    }).catch((err)=>{
+        console.log("Cannot cath  in Error in transaction");
+    });
+    
+    return console.log("unsuccessfull in the payment");
+}
+    
     console.log("Pay to person was successfull")
+    return ;
 }

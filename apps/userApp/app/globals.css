@@ -5,3 +5,17 @@
 .sidebartoggle  {
     @apply absolute left-16 border rounded-lg p-2 bg-black scale-0 opacity-0 text-white transition-all duration-200; 
 }
+.scrollbar-hide {
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scrollbar-width: 0 ;
+ /* Firefox */
+  }
+  
+.scrollbar-hide::-webkit-scrollbar { 
+display: 0px;
+
+}
+.scrollbar-hide::-webkit-scrollbar {
+    display: none; /* Hides the scrollbar in WebKit-based browsers */
+}
+  

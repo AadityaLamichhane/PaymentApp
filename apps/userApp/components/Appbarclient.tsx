@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 export  function AppbarClient(){
     const route = useRouter();
     const session =   useSession();
+    console.log(`The sessions is ${JSON.stringify(session.data)}`)
     const authenticated = session.status === "authenticated";
     return(
     <>

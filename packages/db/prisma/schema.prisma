@@ -15,9 +15,10 @@ model User {
   password          String
   OnRampTransaction OnRampTransaction[]
   Balance           Balance?
-  sentTranfer       TransferToUser[] @relation("fromUser")
-  recieveTransfer   TransferToUser[] @relation("toUser") 
+  sentTranfer       TransferToUser[]    @relation("fromUser")
+  recieveTransfer   TransferToUser[]    @relation("toUser")
 }
+
 model Merchant {
   id        Int      @id @default(autoincrement())
   email     String   @unique
@@ -31,23 +32,24 @@ model OnRampTransaction {
   token     String       @unique
   provider  String
   amount    Int
-  startTime DateTime 
+  startTime DateTime
   userId    Int
-  user      User         @relation(fields: [userId], references:[id])
+  user      User         @relation(fields: [userId], references: [id])
 }
+
 // Responsible for defining the User Transfer 
-model TransferToUser{
-  id        Int @id @default(autoincrement())
-  amount    Int 
-  time      DateTime 
-  status    TransferStatus
-  from_userId   Int
-  from_user User @relation("fromUser",fields: [from_userId] ,references: [id])
+model TransferToUser {
+  id          Int            @id @default(autoincrement())
+  amount      Int
+  startTime   DateTime
+  status      TransferStatus
+  from_userId Int
+  from_user   User           @relation("fromUser", fields: [from_userId], references: [id])
 
   to_userId Int
-  to_user User @relation("toUser",fields: [to_userId],references: [id])  
- 
+  to_user   User @relation("toUser", fields: [to_userId], references: [id])
 }
+
 model Balance {
   id     Int  @id @default(autoincrement())
   userId Int  @unique
@@ -60,10 +62,12 @@ enum AuthType {
   Google
   Github
 }
-enum TransferStatus{
-  Success  
+
+enum TransferStatus {
+  Success
   faill
 }
+
 enum OnRampStatus {
   Success
   Failure

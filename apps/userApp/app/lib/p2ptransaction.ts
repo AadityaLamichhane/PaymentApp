@@ -10,7 +10,8 @@ export async function  P2ptransactions (to : string , amount :number )
         const balancefrom   = await db.balance.findFirstOrThrow({where:{userId:Number(fromUser)}});
         if(balancefrom.amount < amount )
         {
-            return console.error("Not enough money to send to the user ");
+            console.log(`not enough money to make the transatcon `)
+            return false ; 
         }
     }
     catch(err)
@@ -29,7 +30,7 @@ export async function  P2ptransactions (to : string , amount :number )
         return console.error("Failed to find the user to send the money");
     }
     if(toUser.id == session?.user.id){
-        return alert("Cannot send to yourself")
+        throw new Error("You cannot send money to yourself");
 
     }
     // if there is the user 
@@ -64,7 +65,7 @@ try{
         db.transferToUser.create({
        
             data:{
-                time: new Date(),
+                startTime: new Date(),
                 status:"Success",
                 amount: Number((amount)*100),
                 to_userId:toUser.id,
@@ -78,7 +79,7 @@ try{
 }catch(err){
     db.transferToUser.create({
         data:{
-            time: new Date(),
+            startTime: new Date(),
             status:"faill",
             amount: Number((amount)*100),
             to_userId:toUser.id,
@@ -93,5 +94,5 @@ try{
 }
     
     console.log("Pay to person was successfull")
-    return ;
+    return true;
 }

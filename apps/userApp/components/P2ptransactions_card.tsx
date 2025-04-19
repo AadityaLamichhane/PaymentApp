@@ -2,9 +2,33 @@ import { getServerSession } from "next-auth";
 import { authOption } from "../app/lib/auth";
 import db from '@repo/db/client'
 import { OnRampTransaction , TransferToUser ,User} from "@prisma/client";
-import { decl } from "postcss";
-import { error } from "console";
-import { date } from "zod";
+function combineonRampandtransaction( onRampTransactions :OnRampTransaction[], fromData: TransferToUser[] ){
+        
+    const onRamped = onRampTransactions.map((element) =>({
+ 
+            status:element.status=="Success"?"Success":"Failed",
+            amount: element.amount,
+            startTime: element.startTime,
+            onRamp: true ,
+            p2pTransaction: false,
+            from_userId:element.userId,
+            to_userId: element.userId
+        }));
+    const transaction = fromData.map((element) =>(
+    {
+            status:element.status=="Success"?"Success":"Failed",
+            amount: element.amount,
+            startTime: element.startTime,
+            from_userId: element.from_userId,
+            to_userId: element.to_userId,
+            onRamp: false,
+            p2pTransaction: true
+    }));
+    // Combine the two arrays
+    const combinedData = [...onRamped, ...transaction];
+    return combinedData.sort((a, b) =>  (b.startTime).getTime()-(a.startTime).getTime());
+    }
+
 export async  function  P2ptransactions_card(){
     const session =  await getServerSession(authOption);
     const user = session?.user;
@@ -30,21 +54,22 @@ export async  function  P2ptransactions_card(){
     {
         console.log("Error while getting the data ",err);
     }
+    const obtainedData = combineonRampandtransaction(onRampTransactions , fromData)
+
     // making function to combine the onRamping function to the p2p function 
-    function combinetwoobject( onRampTransactions :OnRampTransaction[], fromData: TransferToUser[] ){
-        filtering the needing things and are common 
-    }
+    
     return (
         <div>
             <div>
+
+            
                 {
-             combinedData.map((fromdataelement)=>{
-                return <div key={fromdataelement.id} className="p-2">
-                   
-                <div  className="flex justify-between ">
+                obtainedData.map((fromdataelement)=>{
+                return <div className="p-2">
+                   <div  className="flex justify-between ">
                     <div className="p-1 flex-col justify-center items-start">
                         
-                        Amount :{fromdataelement.amount} 
+                        {fromdataelement.p2pTransaction ?<>by to </>:<>Topup</> } 
                         <div className="flex flex-col text-gray-700 text-sm">
                             <div >
                                 {fromdataelement.startTime.toDateString()}
@@ -52,17 +77,16 @@ export async  function  P2ptransactions_card(){
                             <div>
                                 {fromdataelement.startTime.toLocaleTimeString()}
                             </div>
-                                
-
-                        </div>
-                        
+                        </div>  
                    </div>
-
+                   <div className="m-2 justify-center items-end">
                    
-                     <div className="m-2 justify-center items-end">
-                     {(fromdataelement.from_user ==user.id ||fromdataelement.to_userId==user.id)
-                                ? <span className="text-red-500 font-bold">- Rs{fromdataelement.amount}</span>
-                                : <span className="text-green-500 font-bold">+ Rs {fromdataelement.amount}</span>}
+                   
+                     {( fromdataelement.status =="Failed" ||fromdataelement.status==undefined || fromdataelement.from_userId ==(user.id) && fromdataelement.to_userId != Number(user.id))
+                                ?  <span className="text-red-500 font-bold">
+                                    {fromdataelement.from_userId ==(user.id) && fromdataelement.to_userId != Number(user.id)?"-":"+"} Rs{fromdataelement.amount/100}
+                                    </span>
+                                : <span className="text-green-500 font-bold">+ Rs {fromdataelement.amount/100}</span>}
                     </div>
                 </div>
                 </div>
@@ -70,39 +94,7 @@ export async  function  P2ptransactions_card(){
                 }
 
             </div>
-            <div>
-                {
-                    fromData.map((fromdata)=>{
-                        return <div key={fromdata.id} className="p-2">
-                           
-                        <div  className="flex justify-between ">
-                            <div className="p-1 flex-col justify-center items-start">
-                                
-                                Amount :{fromdata.amount} 
-                                <div className="flex flex-col text-gray-700 text-sm">
-                                    <div >
-                                        {fromdata.startTime.toDateString()}
-                                    </div>
-                                    <div>
-                                        {fromdata.startTime.toLocaleTimeString()}
-                                    </div>
-                                        
-
-                                </div>
-                                
-                           </div>
-
-                           
-                             <div className="m-2 justify-center items-end">
-                             {(fromdata.status ==undefined || fromdata.status == "faill")
-                                        ? <span className="text-red-500 font-bold">{fromdata.status}</span>
-                                        : <span className="text-green-500 font-bold">{fromdata.status}</span>}
-                            </div>
-                        </div>
-                        </div>
-                    })
-                }
-            </div>
+            
         </div>
     )
 }

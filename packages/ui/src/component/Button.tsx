@@ -1,17 +1,23 @@
 "use client";
 
-import { ReactNode } from "react";
+import React from "react";
 
 interface ButtonProps {
-  children: ReactNode;
+  children: React.ReactNode;
   onClick: () => void;
+  disabled?: boolean; // Add the disabled prop
 }
 
-export const Button = ({ onClick, children }: ButtonProps) => {
+export const Button: React.FC<ButtonProps> = ({ children, onClick, disabled }) => {
   return (
-    <button onClick={onClick} type="button" className="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2">
+    <button
+      onClick={onClick}
+      disabled={disabled}
+      className={`px-4 py-2 rounded bg-gray-800 text-white ${
+      disabled ? "opacity-50 cursor-not-allowed" : "hover:bg-gray-700"
+      }`}
+    >
       {children}
     </button>
-
   );
 };

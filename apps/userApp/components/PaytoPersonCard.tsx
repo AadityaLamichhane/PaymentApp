@@ -5,20 +5,18 @@ import { Card } from "@repo/ui/Card";
 import { Button } from "@repo/ui/button";
 import { P2ptransactions } from "../app/lib/p2ptransaction";
 import { Center } from "../../../packages/ui/src/component/Center";
-
 export const Pay2Persion = () => {
     const [amount, setAmount] = useState(0);
     const [number, setNumber] = useState("");
-    const [feedback, setFeedback] = useState(""); // State for feedback messages
-    const [isLoading, setIsLoading] = useState(false); // State for loading indicator
-
+    const [feedback, setFeedback] = useState(""); 
+    const [isLoading, setIsLoading] = useState(false); 
     return (
         <>
             <Card title="Pay to Person">
                 <InputComponent
                     title={"Amount"}
                     label={"Enter Amount"}
-                    onChange={(value) => setAmount(Number(value))}
+                    onChange={(value) => setAmount(Number(value))} 
                 />
                 <InputComponent
                     title={"Number"}
@@ -29,8 +27,8 @@ export const Pay2Persion = () => {
                     <div className="p-2 mt-2">
                         <Button
                             onClick={async () => {
-                                setIsLoading(true); // Show loading state
-                                setFeedback(""); // Clear previous feedback
+                                setIsLoading(true); 
+                                setFeedback(""); 
                                 try {
                                     const result = await P2ptransactions(number, amount);
                                     if (!result ) {
@@ -43,9 +41,9 @@ export const Pay2Persion = () => {
                                     setIsLoading(false); // Hide loading state
                                 }
                             }}
-                            disabled={isLoading} // Now works as expected
+                            disabled={isLoading}
                         >
-                            {isLoading ? "Processing..." : "Transfer"}
+                            {isLoading ? "Doing Transfer wait ..." : "Transfer"}
                         </Button>
                     </div>
                 </Center>

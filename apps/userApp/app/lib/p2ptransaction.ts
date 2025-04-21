@@ -3,7 +3,7 @@ import { getServerSession } from "next-auth"
 import { authOption } from "./auth"
 import db from "@repo/db/client"
 export async function  P2ptransactions (to : string , amount :number )
-{
+    {
     const session = await getServerSession(authOption);
     const fromUser:number = Number(session?.user.id);   
     try {
@@ -11,7 +11,7 @@ export async function  P2ptransactions (to : string , amount :number )
         if(balancefrom.amount < amount )
         {
             console.log(`not enough money to make the transatcon `)
-            return false ; 
+            throw new Error("Error occured while getting the transactions") ; 
         }
     }
     catch(err)
@@ -23,7 +23,7 @@ export async function  P2ptransactions (to : string , amount :number )
             number:to
         }
     }).catch((err)=>{
-        return console.log("The error is occuring while getting the nummber to send to the user ");
+        return console.log("The error is occuring while getting the nummber to send to the user ",err);
     });
     if (!toUser)
     {

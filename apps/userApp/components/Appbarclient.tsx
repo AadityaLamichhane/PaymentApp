@@ -11,7 +11,7 @@ export  function AppbarClient(){
     const authenticated = session.status === "authenticated";
     return(
     <>
-    <div >
+    <div className="overflow-hidden">
         <Appbar 
             user={session.data?.user} 
             authenticated={authenticated} 
@@ -21,6 +21,7 @@ export  function AppbarClient(){
             }}
         />
     </div>
+
     </>
     )
 }

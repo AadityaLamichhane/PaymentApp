@@ -1,7 +1,7 @@
 "use client"
-import { ExitStatus } from "typescript"
 import { SideBarComponent } from "./SideBarComponent"
 import { useState } from "react"
+
 // Icons Fetched from https://heroicons.com/
 function HomeIcon() {
     return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
@@ -26,18 +26,25 @@ function P2pTransactionsIcon()
     <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18.75a60.07 60.07 0 0 1 15.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 0 1 3 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 0 0-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 0 1-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 0 0 3 15h-.75M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm3 0h.008v.008H18V10.5Zm-12 0h.008v.008H6V10.5Z" />
     </svg>)
 
+
+}
+function ChangeIcon({ expand }: { expand: boolean })
+{
+  return (
+    <svg   className={` ${(!expand) ? "rotate-180" : "absolute bg-black "} hover:scale-110 duration-1000  rounded-full`} stroke={`${expand?"black":"white"}`} fill={`${expand?"white":"black"}`} xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/>
+    <path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
+  )
 }
 export const SideBarContainer = ()=>{
-    const [expand, setExpand] = useState<boolean>(false);
+    const [expand, setExpand] = useState(false);
     const toggleExpand = () => {
-        console.log( `The state of the expand applications is ${expand}`);
-        setExpand((prev) => !prev); // Correct way to update state based on the previous value
-        };
+        setExpand((prev) => !prev);
+      };
     return (
         <>
               <div
-                className={`${
-                  expand ? "w-40" : "w-26"} border-solid bg-slate-160 border-r border-slate-300 h-screen pt-28 `}
+                className={`relative ${ 
+                  expand ? "w-40" : "w-26"} border-solid bg-slate-160 border-r border-slate-300 h-screen pt-28 duration-700  `}
               >
                 <div className="flex flex-col text-gray-800 p-2">
                   <SideBarComponent
@@ -65,7 +72,11 @@ export const SideBarContainer = ()=>{
                     expand={expand}
                   />
                 </div>
-                <button  className="  scale-0 sm:scale-100 lg:scale-100"onClick={() => toggleExpand()}>Change</button>
+                <button  className="w-full  scale-0 sm:scale-100 lg:scale-100"onClick={() => toggleExpand()}>
+                <div className="w-full flex justify-center items-center">
+                  <ChangeIcon expand={expand || false} />
+                </div>
+                </button>
               </div>
         </>
     )

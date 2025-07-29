@@ -56,6 +56,7 @@ export const PaymentComponent = () => {
                         <Button onClick={async () => {
                             try {
                                 await onRampTransaction(amount, providerurl);
+                                console.log("Request is inittiated to the onRamptransactoin")
                                 window.location.href = providerurl || "http://localhost:3000"
 
                             }

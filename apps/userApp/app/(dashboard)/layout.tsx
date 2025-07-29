@@ -8,23 +8,18 @@ export default function Layout({
   children: React.ReactNode;
 }){
   return (
-    <div className="flex-col ">
+    <div className="relative flex flex-col h-full">
         <AppbarClient/>
-        <div className="flex w-screen">
+        <div className="flex w-full flex-1 ">
             <SideBarContainer/>
-            <div className="w-full">
-              <Center>
-                  {children}                            
-              </Center>
-                          
+            <div className="flex flex-col justify-center items-center w-full h-screen ">
+              <div className="flex justify-center items-center">
+             {children}
+              </div>
             </div>
-              
-            
-             
-           
-             
-            
         </div>
     </div>
   );
 }
+             
+            
